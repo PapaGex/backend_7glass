@@ -145,7 +145,7 @@ products = [
     },
     {
         '_id': '13',
-        'name': 'Standing Terrarium',
+        'name': 'Standing Terrariubelowm',
         'image': '/images/standingTerrarium.jpg',
         'description': 'Handcrafted Blown Glass standing terrarium',
         'craftsman': 'M.West',
