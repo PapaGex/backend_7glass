@@ -47,7 +47,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ShippinAddressSerializer(serializers.ModelSerializer):
+class ShippingAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ShippingAddress
         fields = '__all__'        
@@ -74,7 +74,7 @@ class OrderSerializer(serializers.ModelSerializer):
     
     def get_shippingAddress(self, obj):
         try:
-            address = ShippingAddressSerializer(obj.shippingAddress, many=False)
+            address = ShippingAddressSerializer(obj.shippingaddress, many=False).data
         except:
             address = False
         return address   
