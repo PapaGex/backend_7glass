@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--aikm60g^!_-uq97#&2h1x036+w!+$tc%+s)ux40v$l)k@8j)b
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+import os
 
 # Application definition
 
@@ -111,7 +111,8 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend_7_Glass/build')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -133,8 +134,12 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '7_Glass',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -177,7 +182,8 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',
+    BASE_DIR / 'frontend_7_Glass/build/static'
 ]
 
 MEDIA_ROOT = 'static/images'
