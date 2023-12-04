@@ -39,6 +39,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'storages',
 
     'base.apps.BaseConfig',
 ]
@@ -197,3 +198,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS = True
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
+DEFAULT_FILE_STORAGE = "storages.backends"
