@@ -135,10 +135,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '7_Glass',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'PASSWORD': '7GS4321!!',
+        'HOST': 'sevenglass.czauwdwum6z5.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
