@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--aikm60g^!_-uq97#&2h1x036+w!+$tc%+s)ux40v$l)k@8j)b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'seven-glass-184320b2c707.herokuapp.com']
 import os
 
 # Application definition
@@ -96,8 +96,9 @@ SIMPLE_JWT = {
 
 MIDDLEWARE = [
 
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhitenoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     'django.middleware.common.CommonMiddleware',
@@ -139,7 +140,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': '7GS4321!!',
-        'HOST': 'sevenglass.czauwdwum6z5.us-east-2.rds.amazonaws.com',
+        'HOST': 'sevenglass.czauwdwum5z5.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -187,7 +188,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'frontend_7_Glass/build/static'
 ]
 
-MEDIA_ROOT = 'static/images'
+MEDIA_ROOT = BASE_DIR / 'static/images'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -199,4 +201,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
 
-DEFAULT_FILE_STORAGE = "storages.backends"
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = "storages.backends.3boto3.S3Boto3Storage"
+
+AWS_ACCESS_KEY_ID = "AKIAWNOQG6GRU3LXVQVD"
+AWS_SECRET_ACCCESS_KEY = "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"
+
+AWS_STORAGE_BUCKET_NAME = "7glass-bucket"
+
+if os.getcwd() == '/app':
+    DEBUG = False
+
+django_heroku.settings(locals())
